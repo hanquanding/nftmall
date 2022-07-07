@@ -6,11 +6,16 @@ package rpc
 import (
 	"context"
 
+	"go-mall/apps/order/rpc/order"
+
 	"github.com/zeromicro/go-zero/zrpc"
 	"google.golang.org/grpc"
 )
 
 type (
+	Request  = rpc.Request
+	Response = rpc.Response
+
 	Rpc interface {
 		Ping(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error)
 	}
@@ -27,6 +32,6 @@ func NewRpc(cli zrpc.Client) Rpc {
 }
 
 func (m *defaultRpc) Ping(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error) {
-	client := NewRpcClient(m.cli.Conn())
+	client := rpc.NewRpcClient(m.cli.Conn())
 	return client.Ping(ctx, in, opts...)
 }

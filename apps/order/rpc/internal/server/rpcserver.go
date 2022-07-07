@@ -8,7 +8,7 @@ import (
 
 	"go-mall/apps/order/rpc/internal/logic"
 	"go-mall/apps/order/rpc/internal/svc"
-	"go-mall/apps/order/rpc/rpc"
+	"go-mall/apps/order/rpc/order"
 )
 
 type RpcServer struct {
